@@ -1,4 +1,4 @@
-package viewer.media.android.androidmediaviewer;
+package viewer.media.android.androidmediaviewer.Core;
 
 import android.content.Context;
 import android.content.Intent;
