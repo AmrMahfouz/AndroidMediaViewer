@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        Thread.setDefaultUncaughtExceptionHandler(new CrashHandler(this, MainActivity.class));
     }
 
     @Override
