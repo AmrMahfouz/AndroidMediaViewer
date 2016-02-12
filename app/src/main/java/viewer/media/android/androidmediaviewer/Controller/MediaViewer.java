@@ -16,12 +16,14 @@ public class MediaViewer {
     private int currentVideoIndex;
     private VideoView videoView;
     private Context context;
+    private int size;
 
     public MediaViewer(Context context, VideoView videoView, ArrayList<String> videos){
         this.videoView = videoView;
         this.videos = videos;
         this.context = context;
         currentVideoIndex = -1;
+        size = Math.min(videos.size(),3);
     }
 
     /**
@@ -62,7 +64,7 @@ public class MediaViewer {
      * Get the next video to play.
      */
     private String getNextVideo(){
-        currentVideoIndex = (currentVideoIndex + 1) % videos.size();
+        currentVideoIndex = (currentVideoIndex + 1) % size;
         String nextVideoPath = videos.get(currentVideoIndex);
         if(DataUtils.isUrl(nextVideoPath) && !DataUtils.connectedToNetwork(context)){
             return getNextVideo();
