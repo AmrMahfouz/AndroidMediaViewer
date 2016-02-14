@@ -15,7 +15,7 @@ public class PlaylistLoader {
     private ArrayList<String> videosNames;
 
     public PlaylistLoader() {
-        videosNames = new ArrayList<String>();
+        videosNames = new ArrayList<>();
         loadPlayList();
     }
 
@@ -38,9 +38,8 @@ public class PlaylistLoader {
             } catch (Exception e) {
                 Log.d("error", e.getMessage());
             } finally {
-                if (sc != null) {
+                if (sc != null)
                     sc.close();
-                }
             }
         }
     }

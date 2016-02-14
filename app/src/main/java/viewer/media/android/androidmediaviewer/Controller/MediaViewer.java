@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.widget.VideoView;
 import java.util.ArrayList;
 
+import viewer.media.android.androidmediaviewer.Core.CrashHandler;
 import viewer.media.android.androidmediaviewer.Utils.DataUtils;
 
 /**
@@ -23,7 +24,8 @@ public class MediaViewer {
         this.videos = videos;
         this.context = context;
         currentVideoIndex = -1;
-        size = Math.min(videos.size(),3);
+        size = videos.size();
+        Thread.setDefaultUncaughtExceptionHandler(new CrashHandler(context, MainActivity.class));
     }
 
     /**
@@ -31,6 +33,8 @@ public class MediaViewer {
      */
     public void initPlayer(){
         //check for empty list not yet
+        if(size == 0)
+            return;
         videoView.setVideoPath(getNextVideo());
         videoView.start();
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {

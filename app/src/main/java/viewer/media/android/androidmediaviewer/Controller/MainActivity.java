@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Thread.setDefaultUncaughtExceptionHandler(new CrashHandler(this, MainActivity.class));
+        Thread.setDefaultUncaughtExceptionHandler(new CrashHandler(this, MainActivity.class));
 
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         final VideoView videoView = (VideoView) findViewById(R.id.videoPlayer);
